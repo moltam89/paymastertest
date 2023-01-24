@@ -9,6 +9,9 @@ const paymasterAddress = "0x866AF75ACF39a5084378a160193eF5B65FabfEd6";
 const randomBuidlTokenHolderAddress = "0x1A334C5F407b468c73aB40481f1D3c1AD535FBB5";
 const randomBuidlTokenHolderPrivateKey = "0x19517dbcdbdf28f52e8a8da0eb62e79b0631818efe6bf75cc4a66f0505082531";
 
+const ethOwnerBuidlTokenHolderAddress = "0xeE027f11E55bba402961a14B0AD7af85cE7BE152";
+const ethOwnerBuidlTokenHolderPrivateKey = "0x6f72a2f8a8ef4b4c9fa04b79a6c034dbbcd462c439876f2959408c95d3bd4fb9";
+
 
 const vendorAddresses =["0xd1DA7D001706b1f34ce97789e8C833b80A08d6F1"]
 // From the notion page, let's try everyone
@@ -26,7 +29,7 @@ const vendorAddresses =["0xd1DA7D001706b1f34ce97789e8C833b80A08d6F1"]
 */
 
 const main = async () => {
-    wallet = new Wallet(randomBuidlTokenHolderPrivateKey);
+    wallet = new Wallet(ethOwnerBuidlTokenHolderPrivateKey);
     provider = new Provider("https://zksync2-testnet.zksync.dev");
     wallet = wallet.connect(provider);
 
@@ -41,19 +44,13 @@ const main = async () => {
             }
     );
 
-    const amount = "0xc8"; // 200
+    const amount = "200";
 
     vendorAddresses.forEach(
         async(address) => {
             try {
                 await (
-                    await buidlTokenContract.transfer(address, amount, { 
-                      // paymaster info
-                      customData: {
-                        paymasterParams,
-                        ergsPerPubdata: utils.DEFAULT_ERGS_PER_PUBDATA_LIMIT,
-                      },
-                    })
+                    await buidlTokenContract.transfer(address, 200)
                 ).wait();
 
                 console.log("Succees", address);
