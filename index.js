@@ -1,3 +1,4 @@
+const { ethers } =  require("ethers");
 const { Provider, Contract, Wallet, utils } =  require("zksync-web3");
 
 // erc-20
@@ -15,7 +16,8 @@ const buidlTokenHolderPrivateKey = "0xca89244353d38d33bc8146a1832a8d0005c6a8a4da
 const vendorAddresses =["0x2d4BBCc282Ea9167D1d24Df9B92227f7B2C060A8", "0x0dc01C03207fB73937B4aC88d840fBBB32e8026d"];
 
 const main = async () => {
-    wallet = new Wallet(buidlTokenHolderPrivateKey);
+    wallet = new ethers.Wallet(buidlTokenHolderPrivateKey);
+    
     provider = new Provider("https://zksync2-testnet.zksync.dev");
     wallet = wallet.connect(provider);
 
