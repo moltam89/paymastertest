@@ -9,6 +9,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "zksync-web3": "*"
+    "zksync-web3": "0.13.0"
   }
 }
