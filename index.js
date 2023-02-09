@@ -37,8 +37,7 @@ const main = async () => {
             await buidlTokenContract.transfer(vendorAddresses[1], amount, { 
               // paymaster info
               customData: {
-                paymasterParams,
-                ergsPerPubdata: utils.DEFAULT_ERGS_PER_PUBDATA_LIMIT,
+                paymasterParams
               },
             })
         ).wait();
